@@ -38,8 +38,8 @@ const shouldInlineRuntimeChunk = process.env.INLINE_RUNTIME_CHUNK !== 'false';
 const useTypeScript = fs.existsSync(paths.appTsConfig);
 
 // style files regexes
-const cssRegex = /\.css$/;
-const cssModuleRegex = /\.module\.css$/;
+const cssRegex = /\.(css|less)$/;
+const cssModuleRegex = /\.module\.(css|less)$/;
 const sassRegex = /\.(scss|sass)$/;
 const sassModuleRegex = /\.module\.(scss|sass)$/;
 
@@ -105,6 +105,12 @@ module.exports = function(webpackEnv) {
           sourceMap: isEnvProduction && shouldUseSourceMap,
         },
       },
+      {
+        loader: require.resolve('less-loader'),
+        options: {
+          javascriptEnabled: true,
+        }
+      }
     ].filter(Boolean);
     if (preProcessor) {
       loaders.push({
@@ -353,6 +359,11 @@ module.exports = function(webpackEnv) {
                       },
                     },
                   ],
+                    ['import',{
+                    libraryName: 'antd-mobile',
+                    libraryDirectory: 'es',
+                    style: 'css'
+                    }],
                 ],
                 // This is a feature of `babel-loader` for webpack (not Babel itself).
                 // It enables caching results in ./node_modules/.cache/babel-loader/
