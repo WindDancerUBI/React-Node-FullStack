@@ -2,8 +2,41 @@ import React from 'react';
 import { Button,List } from "antd-mobile";
 import { connect } from "react-redux";
 
-//一切皆组件
+// const mapStateToProps = (state) => {
+//   return {num:state};
+// }
 
+// const mapDispatchToProps = (dispatch) => {
+//   return{
+//     addGun:() => {
+//       return dispatch({type:'ADD_GUN'});
+//     },
+//     subGun:() => dispatch({type:'SUB_GUN'}),
+//     delayGun:() => dispatch(dispatch => {
+//       setTimeout(() => {
+//         dispatch({type:'ADD_GUN'})
+//       }, 2000);
+//     })
+//   } 
+// }
+// //简化connect
+// @connect(mapStateToProps,mapDispatchToProps)
+
+// 进一步简化connect
+@connect(
+  (state) => ({num:state}),
+  (dispatch) => ({
+    addGun:() => {
+      return dispatch({type:'ADD_GUN'});
+    },
+    subGun:() => dispatch({type:'SUB_GUN'}),
+    delayGun:() => dispatch(dispatch => {
+      setTimeout(() => {
+        dispatch({type:'ADD_GUN'})
+      }, 2000);
+    })
+  }) 
+)
 class App extends React.Component{
   render(){
     return (
@@ -19,26 +52,6 @@ class App extends React.Component{
     );
   }
 }
-
-const mapStateToProps = (state) => {
-  return {num:state};
-}
-
-const mapDispatchToProps = (dispatch) => {
-  return{
-    addGun:() => {
-      return dispatch({type:'ADD_GUN'});
-    },
-    subGun:() => dispatch({type:'SUB_GUN'}),
-    delayGun:() => dispatch(dispatch => {
-      setTimeout(() => {
-        dispatch({type:'ADD_GUN'})
-      }, 2000);
-    })
-  } 
-}
-
-export default App = connect(mapStateToProps,mapDispatchToProps)(App);
 
 function 骑兵连(props) {
     return <h2>骑兵连，连长：{props.boss}</h2>
@@ -109,6 +122,8 @@ class 一营 extends React.Component {
     );
   }
 }
+
+export default App;
 
 
 
