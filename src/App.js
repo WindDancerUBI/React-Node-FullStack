@@ -17,6 +17,12 @@ class App extends React.Component{
             <p>现在还有{num}发子弹</p>
             <Button type="primary" onClick={() => store.dispatch({type:'ADD_GUN'})}>上弹</Button>
             <Button type="primary" onClick={() => store.dispatch({type:'SUB_GUN'})}>打枪</Button>
+            <Button type="primary" onClick={() => store.dispatch(dispatch => {
+              setTimeout(() => {
+                dispatch({type:'ADD_GUN'})
+              }, 2000);
+            })}>延迟上弹</Button>
+
         </div>
     );
   }

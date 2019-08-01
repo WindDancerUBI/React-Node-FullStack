@@ -1,4 +1,5 @@
-const {createStore} = require('redux');
+import {createStore,applyMiddleware,compose} from 'redux';
+import thunk from "redux-thunk";
 
 function countGun(state = 0, action){
     switch (action.type) {
@@ -16,7 +17,7 @@ function countGun(state = 0, action){
     }
 }
 
-const store = createStore(countGun);
+const store = createStore(countGun,compose(applyMiddleware(thunk),window.devToolsExtension?window.devToolsExtension():f=>f));
 
 const initState = store.getState();
 console.log(initState);
