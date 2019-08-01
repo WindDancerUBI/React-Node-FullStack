@@ -1,33 +1,44 @@
 import React from 'react';
 import { Button,List } from "antd-mobile";
-
+import { connect } from "react-redux";
 
 //一切皆组件
 
 class App extends React.Component{
   render(){
-    const {store} = this.props;
-    const boss = "Jack";
-    const num = store.getState();
     return (
         <div>
-            <h2>独立团，团长：{boss}</h2>
+            <h2>独立团，团长：{this.props.boss}</h2>
             <一营 boss="张大猫"></一营>
             <骑兵连 boss="孙德胜"></骑兵连>
-            <p>现在还有{num}发子弹</p>
-            <Button type="primary" onClick={() => store.dispatch({type:'ADD_GUN'})}>上弹</Button>
-            <Button type="primary" onClick={() => store.dispatch({type:'SUB_GUN'})}>打枪</Button>
-            <Button type="primary" onClick={() => store.dispatch(dispatch => {
-              setTimeout(() => {
-                dispatch({type:'ADD_GUN'})
-              }, 2000);
-            })}>延迟上弹</Button>
-
+            <p>现在还有{this.props.num}发子弹</p>
+            <Button type="primary" onClick={this.props.addGun}>上弹</Button>
+            <Button type="primary" onClick={this.props.subGun}>打枪</Button>
+            <Button type="primary" onClick={this.props.delayGun}>延迟上弹</Button>
         </div>
     );
   }
 }
 
+const mapStateToProps = (state) => {
+  return {num:state};
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return{
+    addGun:() => {
+      return dispatch({type:'ADD_GUN'});
+    },
+    subGun:() => dispatch({type:'SUB_GUN'}),
+    delayGun:() => dispatch(dispatch => {
+      setTimeout(() => {
+        dispatch({type:'ADD_GUN'})
+      }, 2000);
+    })
+  } 
+}
+
+export default App = connect(mapStateToProps,mapDispatchToProps)(App);
 
 function 骑兵连(props) {
     return <h2>骑兵连，连长：{props.boss}</h2>
@@ -98,7 +109,6 @@ class 一营 extends React.Component {
     );
   }
 }
-export default App;
 
 
 

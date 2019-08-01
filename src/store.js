@@ -19,15 +19,15 @@ function countGun(state = 0, action){
 
 const store = createStore(countGun,compose(applyMiddleware(thunk),window.devToolsExtension?window.devToolsExtension():f=>f));
 
-const initState = store.getState();
-console.log(initState);
+// const initState = store.getState();
+// console.log(initState);
 
-function listener(){
-    const state = store.getState();
-    console.log(`还剩${state}颗子弹`)
-}
+// function listener(){
+//     const state = store.getState();
+//     console.log(`还剩${state}颗子弹`)
+// }
 
-store.subscribe(listener);
+// store.subscribe(listener);
 
 export default store;
 
