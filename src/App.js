@@ -2,27 +2,6 @@ import React from 'react';
 import { Button,List } from "antd-mobile";
 import { connect } from "react-redux";
 
-// const mapStateToProps = (state) => {
-//   return {num:state};
-// }
-
-// const mapDispatchToProps = (dispatch) => {
-//   return{
-//     addGun:() => {
-//       return dispatch({type:'ADD_GUN'});
-//     },
-//     subGun:() => dispatch({type:'SUB_GUN'}),
-//     delayGun:() => dispatch(dispatch => {
-//       setTimeout(() => {
-//         dispatch({type:'ADD_GUN'})
-//       }, 2000);
-//     })
-//   } 
-// }
-// //简化connect
-// @connect(mapStateToProps,mapDispatchToProps)
-
-// 进一步简化connect
 @connect(
   (state) => ({num:state}),
   (dispatch) => ({
@@ -42,8 +21,6 @@ class App extends React.Component{
     return (
         <div>
             <h2>独立团，团长：{this.props.boss}</h2>
-            <一营 boss="张大猫"></一营>
-            <骑兵连 boss="孙德胜"></骑兵连>
             <p>现在还有{this.props.num}发子弹</p>
             <Button type="primary" onClick={this.props.addGun}>上弹</Button>
             <Button type="primary" onClick={this.props.subGun}>打枪</Button>
@@ -53,10 +30,10 @@ class App extends React.Component{
   }
 }
 
-function 骑兵连(props) {
+export function 骑兵连(props) {
     return <h2>骑兵连，连长：{props.boss}</h2>
 }
-class 一营 extends React.Component {
+export class 一营 extends React.Component {
   constructor(props) {
       super(props);
       this.state = {
