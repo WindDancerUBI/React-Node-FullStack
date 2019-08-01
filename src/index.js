@@ -2,25 +2,29 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import { 一营,骑兵连 } from "./App";
+import { 一营,骑兵连,NotFound } from "./App";
 import * as serviceWorker from './serviceWorker';
 import store from "./store";
 import { Provider } from "react-redux";
-import { BrowserRouter,Route,Link } from "react-router-dom";
+import { BrowserRouter,Route,NavLink,Switch,Redirect } from "react-router-dom";
 
 ReactDOM.render(
     <Provider store={store}>
         <h1>欢迎来到战场</h1>
         <BrowserRouter> 
             <ul>
-                <li><Link to='/'>团长</Link></li>
-                <li><Link to='/yiying'>一营</Link></li>
-                <li><Link to='/qibinglian'>骑兵连</Link></li>
+                <li><NavLink to='/' activeClassName="selected">团长</NavLink></li>
+                <li><NavLink to='/yiying' activeClassName="selected">一营</NavLink></li>
+                <li><NavLink to='/qibinglian' activeClassName="selected">骑兵连</NavLink></li>
             </ul>
-        
-            <Route path='/' exact component={App}></Route>
-            <Route path='/yiying' exact component={一营}></Route>
-            <Route path='/qibinglian' exact component={骑兵连}></Route>
+            {/* Switch只会匹配到第一个符合要求的组件 */}
+            <Switch>
+                <Route path='/' exact component={App}></Route>
+                <Route path='/yiying' exact component={一营}></Route>
+                <Route path='/qibinglian' exact component={骑兵连}></Route>
+                <Route path='/:location' exact component={NotFound}></Route>
+                <Redirect path='/'></Redirect>    
+            </Switch> 
         </BrowserRouter>
     </Provider>, 
     document.getElementById('root')

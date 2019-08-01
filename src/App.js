@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button,List } from "antd-mobile";
 import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
 
 @connect(
   (state) => ({num:state}),
@@ -16,11 +17,13 @@ import { connect } from "react-redux";
     })
   }) 
 )
+@withRouter
 class App extends React.Component{
   render(){
     return (
         <div>
             <h2>独立团，团长：{this.props.boss}</h2>
+            <button onClick={() => {this.props.history.push('/qibinglian')}}>去往骑兵连</button>
             <p>现在还有{this.props.num}发子弹</p>
             <Button type="primary" onClick={this.props.addGun}>上弹</Button>
             <Button type="primary" onClick={this.props.subGun}>打枪</Button>
@@ -30,10 +33,32 @@ class App extends React.Component{
   }
 }
 
-export function 骑兵连(props) {
-    return <h2>骑兵连，连长：{props.boss}</h2>
+
+export class NotFound extends React.Component {
+  constructor(props) {
+    super(props)
+  }
+  render() {
+    console.log(this.props);
+    return (
+      <div>
+        404，页面不存在
+      </div>
+    )
+  }
 }
-export class 一营 extends React.Component {
+
+export function 骑兵连(props) {
+    return(
+      <div>
+        <h2>骑兵连，连长：{props.boss}</h2>
+        <h4>欢迎来到骑兵连</h4>
+      </div>
+    )
+}
+
+@withRouter
+class 一营 extends React.Component {
   constructor(props) {
       super(props);
       this.state = {
@@ -71,10 +96,11 @@ export class 一营 extends React.Component {
     console.log("组件将要卸载");
   }
 
+
   addSolder(){
     console.log(`以下为点击了按钮之后-------------------------`)
     this.setState({
-      solders:[...this.state.solders,`新兵：${Math.floor(Math.random()*100)}`]
+      solders:[...this.state.solders,`新兵编号：${Math.floor(Math.random()*100)}`]
     })
   }
   
@@ -83,13 +109,8 @@ export class 一营 extends React.Component {
       return (
       <div>
         <h2>一营，营长：{this.props.boss}</h2>
+        <button onClick={() => {this.props.history.push('/qibinglian')}}>去往骑兵连</button>
         <Button type="primary" onClick={() => this.addSolder()}>新兵入伍</Button>
-        {/* <ul>
-            {this.state.solders.map(v=>{
-                // 在渲染列表的时候，每个列表都必须有一个唯一的key属性，用来做虚拟dom判断的
-                return <li key={v}>{v}</li>
-            })}
-        </ul>     */}
         <List renderHeader={() => '士兵列表'}>
             {this.state.solders.map((v,index)=>{
                 return <List.Item key={index}>{v}</List.Item>
@@ -100,7 +121,9 @@ export class 一营 extends React.Component {
   }
 }
 
+
 export default App;
+export {一营}
 
 
 

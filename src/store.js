@@ -9,7 +9,7 @@ function countGun(state = 0, action){
             if(state > 0){
                 return state-1;
             }else{
-                console.log('子弹用完，无法开枪');
+                alert('子弹用完，无法开枪');
                 return state;
             }  
         default:
@@ -17,7 +17,12 @@ function countGun(state = 0, action){
     }
 }
 
-const store = createStore(countGun,compose(applyMiddleware(thunk),window.devToolsExtension?window.devToolsExtension():f=>f));
+const store = createStore(countGun,
+    compose(
+        applyMiddleware(thunk),
+        window.devToolsExtension?window.devToolsExtension():alert("没有安装插件")
+    )
+);
 
 // const initState = store.getState();
 // console.log(initState);

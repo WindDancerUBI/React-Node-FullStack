@@ -8,4 +8,5 @@ React+Node+Redux+Router+Antd-mobile 全栈开发---聊天webapp(手机版)
 * V1.3 使用装饰器的方法简化connect的书写。
 
 * V2.1 router的简单使用，通过路由更新页面的组件
+* V2.2 router的进阶使用，history，match，Switch,Redirect 
 
