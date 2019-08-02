@@ -4,7 +4,10 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 
 @connect(
-  (state) => ({num:state}),
+  (state) => {
+    console.log(state)
+    return({count:state.countGun});
+  },
   (dispatch) => ({
     addGun:() => {
       return dispatch({type:'ADD_GUN'});
@@ -23,8 +26,8 @@ class App extends React.Component{
     return (
         <div>
             <h2>独立团，团长：{this.props.boss}</h2>
-            <button onClick={() => {this.props.history.push('/qibinglian')}}>去往骑兵连</button>
-            <p>现在还有{this.props.num}发子弹</p>
+            <button onClick={() => {this.props.history.push('/dashboard/qibinglian')}}>去往骑兵连</button>
+            <p>现在还有{this.props.count}发子弹</p>
             <Button type="primary" onClick={this.props.addGun}>上弹</Button>
             <Button type="primary" onClick={this.props.subGun}>打枪</Button>
             <Button type="primary" onClick={this.props.delayGun}>延迟上弹</Button>
@@ -35,9 +38,6 @@ class App extends React.Component{
 
 
 export class NotFound extends React.Component {
-  constructor(props) {
-    super(props)
-  }
   render() {
     console.log(this.props);
     return (
@@ -48,7 +48,7 @@ export class NotFound extends React.Component {
   }
 }
 
-export function 骑兵连(props) {
+export function qiBingLian(props) {
     return(
       <div>
         <h2>骑兵连，连长：{props.boss}</h2>
@@ -58,7 +58,7 @@ export function 骑兵连(props) {
 }
 
 @withRouter
-class 一营 extends React.Component {
+class yiYing extends React.Component {
   constructor(props) {
       super(props);
       this.state = {
@@ -109,7 +109,7 @@ class 一营 extends React.Component {
       return (
       <div>
         <h2>一营，营长：{this.props.boss}</h2>
-        <button onClick={() => {this.props.history.push('/qibinglian')}}>去往骑兵连</button>
+        <button onClick={() => {this.props.history.push('/dashboard/qibinglian')}}>去往骑兵连</button>
         <Button type="primary" onClick={() => this.addSolder()}>新兵入伍</Button>
         <List renderHeader={() => '士兵列表'}>
             {this.state.solders.map((v,index)=>{
@@ -123,7 +123,7 @@ class 一营 extends React.Component {
 
 
 export default App;
-export {一营}
+export {yiYing}
 
 
 
