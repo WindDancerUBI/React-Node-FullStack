@@ -1,13 +1,33 @@
 import {createStore,applyMiddleware,compose,combineReducers} from 'redux';
 import thunk from "redux-thunk";
+import axios from 'axios';
 
 export const loginIn = () => ({
     type:"LOGIN_IN"
 });
 
 export const loginOut = () => ({
-    type:"LOGIN_OUT"
+    type:"LOGIN_OUT",
 });
+
+export function getUserData(){
+    return dispatch => {
+        axios.get('/data').then(
+            res => {
+                if(res.status == 200){
+                    dispatch(userData(res.data));
+                }
+            }
+        )
+    }
+}
+
+function userData(data){
+    return {
+        type: 'GET_DATA',
+        playload: data[0]
+    }
+}
 
 function countGun(state = 0, action){
     switch (action.type) {
@@ -25,7 +45,7 @@ function countGun(state = 0, action){
     }
 }
 
-function loginOperation(state = {isAuth:false},action){
+function loginOperation(state = {isAuth:false,user:"Rose",age:24},action){
     switch (action.type) {
         case "LOGIN_IN":
             return {
@@ -37,6 +57,13 @@ function loginOperation(state = {isAuth:false},action){
                 ...state,
                 isAuth:false,
             }
+
+        case "GET_DATA":
+            return {
+                ...state,
+                ...action.playload,
+            }
+
         default:
             return {
                 ...state,
