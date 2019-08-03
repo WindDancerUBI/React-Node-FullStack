@@ -3,14 +3,14 @@ import { connect } from "react-redux";
 import { yiYing,qiBingLian,NotFound } from "./App";
 import App from './App'
 import { BrowserRouter,Route,NavLink,Switch,Redirect } from "react-router-dom";
-import { loginIn,loginOut } from "./store";
+import { loginOut } from "./store";
 
 @connect(
     (state) => ({isLoginIn:state.loginOperation.isAuth}),
-    (dispatch) => ({
-        loginOut:() => dispatch({type:"LOGIN_OUT"})
-    })
-    // {loginOut}
+    // (dispatch) => ({
+    //     loginOut:() => dispatch({type:"LOGIN_OUT"})
+    // })
+    {loginOut}
 )
 class DashBoard extends Component {
     render() {

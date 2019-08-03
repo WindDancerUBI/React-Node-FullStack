@@ -11,3 +11,5 @@ React+Node+Redux+Router+Antd-mobile 全栈开发---聊天webapp(手机版)
 * V2.2 router的进阶使用，history，match，Switch,Redirect。
 * V2.3 redux+router的综合使用，结合两者实现简单的登录功能。
 
+* V3.1 axios+proxy实现前后端联调
+

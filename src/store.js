@@ -18,6 +18,7 @@ function countGun(state = 0, action){
                 return state-1
             }else{
                 alert('子弹用完，无法开枪');
+                return ;
             }  
         default:
             return 0;
