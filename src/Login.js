@@ -4,6 +4,7 @@ import { Redirect } from "react-router-dom";
 import { loginIn} from "./store";
 import axios from "axios";
 import { getUserData } from "./store";
+import "./config";
 
 @connect(
     (state) => state.loginOperation,
