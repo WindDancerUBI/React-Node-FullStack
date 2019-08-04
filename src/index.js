@@ -1,19 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import * as serviceWorker from './serviceWorker';
-import store from "./store";
 import { Provider } from "react-redux";
 import { BrowserRouter,Route,Switch,Redirect } from "react-router-dom";
-import Login from "./Login";
-import DashBoard from "./DashBoard";
+import store from "./redux/store";
+import Login from "./container/login/login";
+import Register from "./container/register/register";
 
 ReactDOM.render(
     <Provider store={store}>
         <BrowserRouter>
             <Switch>
                 <Route path="/login" component={Login}></Route>
-                <Route path="/dashboard" component={DashBoard}></Route>
-                <Redirect to="/dashboard"></Redirect>
+                <Route path="/register" component = {Register}></Route>
             </Switch>
         </BrowserRouter>
     </Provider>, 
