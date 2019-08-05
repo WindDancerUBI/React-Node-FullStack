@@ -6,14 +6,17 @@ import { BrowserRouter,Route,Switch,Redirect } from "react-router-dom";
 import store from "./redux/store";
 import Login from "./container/login/login";
 import Register from "./container/register/register";
+import AuthRoute from './component/authRoute/anthRoute';
+import Table from "./component/table/index";
 
 ReactDOM.render(
     <Provider store={store}>
         <BrowserRouter>
-            <Switch>
+            {/* <Switch> */}
+                <AuthRoute></AuthRoute>
                 <Route path="/login" component={Login}></Route>
                 <Route path="/register" component = {Register}></Route>
-            </Switch>
+            {/* </Switch> */}
         </BrowserRouter>
     </Provider>, 
     document.getElementById('root')
