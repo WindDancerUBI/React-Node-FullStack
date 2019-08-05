@@ -1,6 +1,6 @@
 import axios from "axios";
 
-initState = {
+const initState = {
     user:'',
     pwd:'',
     type:'',
@@ -10,7 +10,7 @@ initState = {
 
 
 //Reducer--user
-function User(state = initState,action){
+export function user(state=initState,action){
     switch (action.type) {
         case "REGISTER_SUCCESS":     
             return{
@@ -27,19 +27,21 @@ function User(state = initState,action){
                 isAuth: false
             }
         default:
-            break;
+            return{
+                ...state,
+            }
     }
 }
 
 //action--user
-const registerSuccess = (data) => {
+function registerSuccess(data){
     return {
         type: "REGISTER_SUCCESS",
         playload: data,
     }
 }
 
-const errorMsg = (msg) => {
+function errorMsg(msg){
     return {
         type: "ERROR_MSG",
         msg: msg,
@@ -49,13 +51,14 @@ const errorMsg = (msg) => {
 export function register({user,pwd,repeatpwd,type}){
     if(!user||!pwd||!type){
         return errorMsg('你的信息未填写完整');
-    }else if(user !== repeatpwd){
+    }
+    if(pwd !== repeatpwd){
         return errorMsg('两次密码不相同');
     }
-    return dispatch(
+    return dispatch => (
         axios.post('/user/register',{user,pwd,type})
         .then(res => {
-            if(res.status == 200 && res.data.code == 0){
+            if(res.status == 200){
                 dispatch(registerSuccess({user,pwd,type}));
             }else{
                 dispatch(errorMsg(res.data.msg))

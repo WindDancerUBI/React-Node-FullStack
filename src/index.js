@@ -7,7 +7,6 @@ import store from "./redux/store";
 import Login from "./container/login/login";
 import Register from "./container/register/register";
 import AuthRoute from './component/authRoute/anthRoute';
-import Table from "./component/table/index";
 
 ReactDOM.render(
     <Provider store={store}>

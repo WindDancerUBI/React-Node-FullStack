@@ -2,7 +2,13 @@ import React, { Component } from 'react'
 import logoImg from "./../../component/assert/job.png";
 import './register.less'
 import { InputItem,List,WhiteSpace,Button, Radio,WingBlank } from 'antd-mobile';
+import { register } from "./../../redux/user/user";
+import { connect } from "react-redux";
 
+@connect(
+    state => state.user,
+    {register}
+)
 class Register extends Component {
     constructor(props){
         super(props);
@@ -14,8 +20,9 @@ class Register extends Component {
         }
     }
 
-    register(){
+    registerHandle(){
         console.log(this.state);
+        this.props.register(this.state);
     }
 
     changeHandle(key,val){
@@ -38,7 +45,7 @@ class Register extends Component {
                     <RadioItem onChange={() => this.changeHandle('type',"genius")} checked={this.state.type === 'genius'}>求职者</RadioItem>
                     <RadioItem onChange={() => this.changeHandle('type',"boss")} checked={this.state.type === 'boss'}>老板</RadioItem>
                     <WhiteSpace />
-                    <Button type="primary" onClick={() => this.register()}>注册</Button>
+                    <Button type="primary" onClick={() => this.registerHandle()}>注册</Button>
                 </WingBlank>
             </div>
         )
