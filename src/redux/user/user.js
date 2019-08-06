@@ -1,13 +1,14 @@
 import axios from "axios";
+import getRedirectPath from "./../../utils/getRedirectPath";
 
 const initState = {
+    toRedirect: '',
     user:'',
     pwd:'',
     type:'',
     msg:'',
     isAuth:false
 }
-
 
 //Reducer--user
 export function user(state=initState,action){
@@ -16,6 +17,16 @@ export function user(state=initState,action){
             return{
                 ...state,
                 msg:'',
+                toRedirect: getRedirectPath(action.playload),
+                isAuth:true,
+                ...action.playload,
+            }
+
+        case "LOGIN_SUCCESS":
+            return{
+                ...state,
+                msg:'',
+                toRedirect: getRedirectPath(action.playload),
                 isAuth:true,
                 ...action.playload,
             }
@@ -41,12 +52,20 @@ function registerSuccess(data){
     }
 }
 
+function loginSuccess(data){
+    return {
+        type: "LOGIN_SUCCESS",
+        playload: data,
+    }
+}
+
 function errorMsg(msg){
     return {
         type: "ERROR_MSG",
         msg: msg,
     }
 }
+
 
 export function register({user,pwd,repeatpwd,type}){
     if(!user||!pwd||!type){
@@ -57,8 +76,8 @@ export function register({user,pwd,repeatpwd,type}){
     }
     return dispatch => (
         axios.post('/user/register',{user,pwd,type})
-        .then(res => {
-            if(res.status == 200){
+        .then(res => {   
+            if(res.status == 200 && res.data.code == 0){
                 dispatch(registerSuccess({user,pwd,type}));
             }else{
                 dispatch(errorMsg(res.data.msg))
@@ -66,4 +85,20 @@ export function register({user,pwd,repeatpwd,type}){
         })
     )
     
+}
+
+export function login({user,pwd}){
+    if(!user||!pwd){
+        return errorMsg('用户名密码必须填写')
+    }
+    return dispatch => {
+        axios.post('/user/login',{user,pwd})
+        .then(res => {
+            if(res.status === 200 && res.data.code === 0){
+                dispatch(loginSuccess(res.data.data));
+            }else{
+                dispatch(errorMsg(res.data.msg))
+            }
+        })
+    }
 }

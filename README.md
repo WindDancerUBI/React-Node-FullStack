@@ -16,5 +16,6 @@ React+Node+Redux+Router+Antd-mobile 全栈开发---聊天webapp(手机版)
 * V3.3 使用Toast（antd-mobile）来展示axios拦截器的工作原理。
 
 * V4.1 完成登陆界面和注册界面的编写
-* V4.2 mongo持久化数据，完成注册页面的前后端联调
+* V4.2 mongo持久化数据，完成注册页面的前后端联调
+* V4.3 完成MD5加密和登录逻辑
 
