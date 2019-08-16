@@ -7,12 +7,14 @@ import store from "./redux/store";
 import Login from "./container/login/login";
 import Register from "./container/register/register";
 import AuthRoute from './component/authRoute/anthRoute';
+import BossInfo from "./container/bossInfo/bossInfo";
 
 ReactDOM.render(
     <Provider store={store}>
         <BrowserRouter>
             {/* <Switch> */}
                 <AuthRoute></AuthRoute>
+                <Route path='/bossinfo' component={BossInfo}></Route>
                 <Route path="/login" component={Login}></Route>
                 <Route path="/register" component = {Register}></Route>
             {/* </Switch> */}

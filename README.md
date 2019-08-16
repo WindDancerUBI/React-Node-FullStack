@@ -1,3 +1,10 @@
+<!--
+ * @Description: In User Settings Edit
+ * @Author: huangjitao
+ * @Date: 2019-08-06 09:03:29
+ * @LastEditors: huangjitao
+ * @LastEditTime: 2019-08-16 16:31:22
+ -->
 # React-Node-FullStack
 ## Target:
 React+Node+Redux+Router+Antd-mobile 全栈开发---聊天webapp(手机版)
@@ -19,3 +26,4 @@ React+Node+Redux+Router+Antd-mobile 全栈开发---聊天webapp(手机版)
 * V4.2 mongo持久化数据，完成注册页面的前后端联调
 * V4.3 完成MD5加密和登录逻辑
 
+* V5.1 完成了Boss完善页面的前端和后端的功能模块

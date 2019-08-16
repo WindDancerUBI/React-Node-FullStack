@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-//连接mongodb,创建库(集合)imooc，没有的话会自动新建
+//连接mongodb,创建库(集合)fullstack，没有的话会自动新建
 const DB_URL = 'mongodb://localhost:27017/fullstack';
 mongoose.connect(DB_URL);
 mongoose.connection.on('connected', function () {

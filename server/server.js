@@ -6,7 +6,7 @@ const cookieParser = require('cookie-parser')
 const app = express();
 
 app.get('/',(req,res) => {
-    res.send('<h1>hello,shijie</h1>')
+    res.send('<h1>这是聊天App后台入口</h1>')
 });
 
 app.use(cookieParser());
