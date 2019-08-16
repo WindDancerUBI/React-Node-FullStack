@@ -78,6 +78,14 @@ Router.post('/update',(req,res) => {
     })
 })
 
+Router.get('/remove',(req,res) => {
+    Users.remove({},(err,doc) => {
+        if(doc){
+            return res.json(doc);
+        }
+    })
+})
+
 // 复杂MD5加密，防止暴力破解
 function md5Pwd(pwd){
     const salt = 'hjt_is-good@V587--%^&*%$$^&';

@@ -8,12 +8,14 @@ import Login from "./container/login/login";
 import Register from "./container/register/register";
 import AuthRoute from './component/authRoute/anthRoute';
 import BossInfo from "./container/bossInfo/bossInfo";
+import GeniusInfo from "./container/geniusInfo/geniusInfo";
 
 ReactDOM.render(
     <Provider store={store}>
         <BrowserRouter>
             {/* <Switch> */}
                 <AuthRoute></AuthRoute>
+                <Route path='/geniusinfo' component={GeniusInfo}></Route>                
                 <Route path='/bossinfo' component={BossInfo}></Route>
                 <Route path="/login" component={Login}></Route>
                 <Route path="/register" component = {Register}></Route>
