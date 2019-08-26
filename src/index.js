@@ -1,3 +1,10 @@
+/*
+ * @Description: In User Settings Edit
+ * @Author: your name
+ * @Date: 2019-08-24 15:29:21
+ * @LastEditTime: 2019-08-24 16:38:47
+ * @LastEditors: Please set LastEditors
+ */
 import React from 'react';
 import ReactDOM from 'react-dom';
 import * as serviceWorker from './serviceWorker';
@@ -9,17 +16,19 @@ import Register from "./container/register/register";
 import AuthRoute from './component/authRoute/anthRoute';
 import BossInfo from "./container/bossInfo/bossInfo";
 import GeniusInfo from "./container/geniusInfo/geniusInfo";
+import DashBoard from "./container/dashBoard/dashBoard";
 
 ReactDOM.render(
     <Provider store={store}>
         <BrowserRouter>
-            {/* <Switch> */}
-                <AuthRoute></AuthRoute>
+            <AuthRoute></AuthRoute>
+            <Switch>  
                 <Route path='/geniusinfo' component={GeniusInfo}></Route>                
                 <Route path='/bossinfo' component={BossInfo}></Route>
                 <Route path="/login" component={Login}></Route>
                 <Route path="/register" component = {Register}></Route>
-            {/* </Switch> */}
+                <Route component = {DashBoard}></Route>                
+            </Switch>
         </BrowserRouter>
     </Provider>, 
     document.getElementById('root')

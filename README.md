@@ -2,8 +2,8 @@
  * @Description: In User Settings Edit
  * @Author: huangjitao
  * @Date: 2019-08-06 09:03:29
- * @LastEditors: huangjitao
- * @LastEditTime: 2019-08-16 17:12:12
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2019-08-26 20:43:54
  -->
 # React-Node-FullStack
 ## Target:
@@ -28,3 +28,5 @@ React+Node+Redux+Router+Antd-mobile 全栈开发---聊天webapp(手机版)
 
 * V5.1 完成了Boss完善页面的前端和后端的功能模块
 * V5.2 完成了Genius完善页面的功能以及propType类型检测的使用
+
+* V6.1 完成了导航列表的NavBar和TabBar部分

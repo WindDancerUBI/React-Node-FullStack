@@ -1,3 +1,10 @@
+/*
+ * @Description: In User Settings Edit
+ * @Author: your name
+ * @Date: 2019-08-24 15:29:21
+ * @LastEditTime: 2019-08-24 15:52:52
+ * @LastEditors: Please set LastEditors
+ */
 import React, { Component } from 'react'
 import { NavBar,InputItem,TextareaItem, Button } from "antd-mobile";
 import AvatarSelector from "./../../component/AvatarSelector/AvatarSelector";
@@ -12,10 +19,6 @@ import { Redirect } from "react-router-dom";
 class BossInfo extends Component {
     constructor(props) {
         super(props)
-    }
-
-    componentDidMount() {
-
     }
 
     changeHandle(key,val){
