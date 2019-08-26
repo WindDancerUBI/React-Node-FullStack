@@ -2,7 +2,7 @@
  * @Description: In User Settings Edit
  * @Author: your name
  * @Date: 2019-08-24 15:57:05
- * @LastEditTime: 2019-08-26 20:39:49
+ * @LastEditTime: 2019-08-26 21:12:10
  * @LastEditors: Please set LastEditors
  */
 import React, { Component } from 'react'
@@ -11,10 +11,8 @@ import { NavBar } from 'antd-mobile';
 import NavLinkBar from "./../navLink/navLink";
 import './dashBoard.scss'
 import { Switch,Route } from "react-router-dom";
+import Boss from './../../component/boss/boss'
 
-function Boss() {
-    return <h2>Boss首页</h2>
-}
 
 function Genius() {
     return  <h2>Genius首页</h2>
@@ -72,11 +70,11 @@ class DashBoard extends Component {
                 <NavBar className="fixed-header" mode='dark'>
                     {navList.find(v => v.path === pathname).title}
                 </NavBar>
-                <div>
-                    <Switch style={{marginTop: 45}}> 
-                        {navList.map(item => 
-                            (<Route key={item.path} path={item.path} component={item.component}/>)
-                        )}
+                <div style={{marginTop: 45}}>
+                    <Switch> 
+                        {navList.map(item =>{
+                            return <Route key={item.path} path={item.path} component={item.component} />
+                        })}
                     </Switch>
                 </div>
                 <NavLinkBar data = {navList}/>

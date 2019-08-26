@@ -1,3 +1,10 @@
+/*
+ * @Description: In User Settings Edit
+ * @Author: your name
+ * @Date: 2019-08-24 15:29:21
+ * @LastEditTime: 2019-08-26 20:53:10
+ * @LastEditors: Please set LastEditors
+ */
 const express = require('express');
 const Router = express.Router();
 const model = require('./module')
@@ -24,8 +31,9 @@ Router.get('/info',(req,res) => {
 
 // mongo数据库中用户表Users
 Router.get('/list',(req,res) => {
-    Users.find({},(err,doc) => {
-        return res.json(doc);
+    const {type} = req.query
+    Users.find({type},(err,doc) => {
+        return res.json({code:0,data:doc});
     })
 })
 
