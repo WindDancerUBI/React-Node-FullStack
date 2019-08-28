@@ -1,8 +1,8 @@
 /*
  * @Description: In User Settings Edit
  * @Author: your name
- * @Date: 2019-08-26 20:56:04
- * @LastEditTime: 2019-08-28 20:01:32
+ * @Date: 2019-08-28 19:48:59
+ * @LastEditTime: 2019-08-28 20:01:45
  * @LastEditors: Please set LastEditors
  */
 import React, { Component } from 'react'
@@ -14,7 +14,7 @@ import UserCard from "./../userCard/userCard";
     state => state.chatuser,
     {getUserList}
 )
-class Boss extends Component {
+class Genius extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -23,7 +23,7 @@ class Boss extends Component {
     }
 
     componentDidMount() {
-        this.props.getUserList('genius')
+        this.props.getUserList('boss')
     }
 
     render() {
@@ -35,4 +35,4 @@ class Boss extends Component {
     }
 }
 
-export default Boss
+export default Genius

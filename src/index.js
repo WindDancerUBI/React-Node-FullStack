@@ -2,7 +2,7 @@
  * @Description: In User Settings Edit
  * @Author: your name
  * @Date: 2019-08-24 15:29:21
- * @LastEditTime: 2019-08-24 16:38:47
+ * @LastEditTime: 2019-08-28 22:06:03
  * @LastEditors: Please set LastEditors
  */
 import React from 'react';
@@ -17,6 +17,7 @@ import AuthRoute from './component/authRoute/anthRoute';
 import BossInfo from "./container/bossInfo/bossInfo";
 import GeniusInfo from "./container/geniusInfo/geniusInfo";
 import DashBoard from "./container/dashBoard/dashBoard";
+import  "./index.css";
 
 ReactDOM.render(
     <Provider store={store}>

@@ -3,7 +3,7 @@
  * @Author: huangjitao
  * @Date: 2019-08-06 09:03:29
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2019-08-26 21:55:16
+ * @LastEditTime: 2019-08-28 22:08:39
  -->
 # React-Node-FullStack
 ## Target:
@@ -31,3 +31,4 @@ React+Node+Redux+Router+Antd-mobile 全栈开发---聊天webapp(手机版)
 
 * V6.1 完成了导航列表的NavBar和TabBar部分
 * V6.2 完善了牛人列表组件部分
+* V6.3 完成了Boss列表和个人中心组件部分

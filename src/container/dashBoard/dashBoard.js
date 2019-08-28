@@ -2,27 +2,23 @@
  * @Description: In User Settings Edit
  * @Author: your name
  * @Date: 2019-08-24 15:57:05
- * @LastEditTime: 2019-08-26 21:12:10
+ * @LastEditTime: 2019-08-28 22:07:11
  * @LastEditors: Please set LastEditors
  */
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { NavBar } from 'antd-mobile';
 import NavLinkBar from "./../navLink/navLink";
-import './dashBoard.scss'
+// import './dashBoard.scss'
 import { Switch,Route } from "react-router-dom";
 import Boss from './../../component/boss/boss'
+import Genius from "./../../component/genius/genius";
+import User from "./../../component/User/user";
 
-
-function Genius() {
-    return  <h2>Genius首页</h2>
-}
 function Msg() {
     return  <h2>Msg首页</h2>
 }
-function User() {
-    return  <h2>User首页</h2>
-}
+
 
 @connect(
     state => state
